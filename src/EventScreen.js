@@ -1,93 +1,75 @@
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import React, { Component } from 'react';
+import { Image, SafeAreaView, View, FlatList, StyleSheet, Text,TouchableOpacity, Alert } from 'react-native';
+import Post from './Post.js';
+import EventPost from './EventPost';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Event Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Event Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Event Item',
-  },
-  {
-    id: 'bd7acbea-c1b1-46a2-aed5-3ad53abb28ba',
-    title: 'First Event Item',
-  },
-  {
-    id: '3ac68afc-c605-48h3-a4f8-fbd91aa97f63',
-    title: 'Second Event Item',
-  },
-  {
-    id: '58694a0f-3da1-47jf-bd96-145571e29d72',
-    title: 'Third Event Item',
-  },
-  {
-    id: 'bd7acbea-c1b1-f6c2-aed5-3ad53abb28ba',
-    title: 'First Event Item',
-  },
-  {
-    id: '3ac68afc-c6a5-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Event Item',
-  },
-  {
-    id: '58694a0f-3dh1-471f-bd96-145571e29d72',
-    title: 'Third Event Item',
-  },
-  {
-    id: 'bd7acbea-a1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Event Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4a8-fbd91aa97f63',
-    title: 'Second Event Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd36-145571e29d72',
-    title: 'Third Event Item',
-  },
-];
+const DATA = Array(10);
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+export default class EventScreen extends Component {
+    render(){
+        const renderItem = ({ item, onPress }) => (
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventPost',{item},)}>
+            <View style={styles.post}>
+                <Image
+                    style={styles.icon}
+                    source={item.image}
+                />
+                <View style={styles.item}>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.detail}>{item.detail}</Text>
+                </View>
+            </View>
+            </TouchableOpacity>
+        );
 
-const EventScreen = () => {
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
+        //sample items
+        for(let i=0;i<10;i++){
+            let p=new Post();
+            p.id=i;
+            p.title="event"+i;
+            DATA[i]=p
+        }
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
+        return (
+        <View style={styles.container}>
+                    <FlatList
+                        data={DATA}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
+
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
+    container: {
+        flex: 1,
+        //marginTop: StatusBar.currentHeight || 0,
+    },
+    item: {
+        padding: 0,//height of post
+        marginVertical: 5,//margin between item rows
+        marginHorizontal: 5,//margin between image and texts
+    },
+    title: {
+        fontSize: 28,
+    },
+    detail: {
+        fontSize: 15,
+    },
+    post: {
+        height: 125,
+        flexDirection: "row",
+        borderWidth: 1,
+        borderColor: "#20232a",
+    },
+    icon: {
+        width:100,
+        height:100,
+        marginTop: 12.5,
+        marginLeft: 5,
+    },
 });
-
-export default EventScreen;
