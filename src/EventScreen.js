@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         //marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        padding: 0,//height of post
+        padding: 0,
         marginVertical: 5,//margin between item rows
         marginHorizontal: 5,//margin between image and texts
     },
