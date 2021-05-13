@@ -33,7 +33,7 @@ export default class EventScreen extends Component {
 
         return (
         <View style={styles.container}>
-                    <FlatList
+                    <FlatList   //extraData to re-render DATA
                         data={DATA}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
