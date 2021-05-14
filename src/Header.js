@@ -57,7 +57,7 @@ const Header = () => {
     const [shouldShow, setShouldShow] = useState(true);
     const [textInputValue, setTextInputValue] = React.useState('');
     return (
-        <View style={{flexDirection: "row",backgroundColor: '#F0000'}}>
+        <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
             {shouldShow ? (
                 <Image
                   style={styles.logoStyles}
