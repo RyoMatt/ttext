@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
     }
 });
 
-
-
 const Header = () => {
     const [shouldShow, setShouldShow] = useState(true);
     const [textInputValue, setTextInputValue] = React.useState('');
