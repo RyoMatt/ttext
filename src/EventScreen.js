@@ -3,8 +3,10 @@ import { Image, SafeAreaView, View, FlatList, StyleSheet, Text,TouchableOpacity,
 import Post from './Post.js';
 import EventPost from './EventPost';
 import { createStackNavigator } from '@react-navigation/stack';
+import Header from './Header';
 
 const DATA = Array(10);
+const searchKey=Header.textInputValue;
 
 export default class EventScreen extends Component {
     render(){
@@ -32,7 +34,9 @@ export default class EventScreen extends Component {
         }
 
         return (
+
         <View style={styles.container}>
+            <Header/>
                     <FlatList   //extraData to re-render DATA
                         data={DATA}
                         renderItem={renderItem}
@@ -47,6 +51,7 @@ export default class EventScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#FFFFFF'
         //marginTop: StatusBar.currentHeight || 0,
     },
     item: {
