@@ -30,6 +30,7 @@ export default class EventScreen extends Component {
             let p=new Post();
             p.id=i;
             p.title="event"+i;
+            p.detail+=' '+p.title
             DATA[i]=p
         }
 
