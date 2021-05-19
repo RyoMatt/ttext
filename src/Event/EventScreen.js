@@ -25,7 +25,7 @@ export default class EventScreen extends Component {
             </TouchableOpacity>
         );
 
-        //sample items
+        //sample items & ask data here
         for(let i=0;i<10;i++){
             let p=new Post();
             p.id=i;
@@ -35,15 +35,23 @@ export default class EventScreen extends Component {
         }
 
         return (
-
         <View style={styles.container}>
             <Header/>
-                    <FlatList   //extraData to re-render DATA
-                        data={DATA}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
+            <FlatList   //extraData to re-render DATA
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+            <View style={{position: 'absolute', bottom:20, right:30,zIndex: 10,width: 50, height: 50,}}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('PostEvent')}>
+                    <Image
+                        style={{width: 50, height: 50,}}
+                        source={require("ttext/src/assets/post_icon.png")}
                     />
-                </View>
+                </TouchableOpacity>
+            </View>
+        </View>
+
 
         );
     }
