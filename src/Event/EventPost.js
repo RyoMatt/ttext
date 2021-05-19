@@ -63,6 +63,14 @@ export default class EventPost extends Component {
                         </View>
                     </View>
                 </ScrollView>
+                <View style={{position: 'absolute', bottom:20, right:30,zIndex: 10,width: 50, height: 50,}}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('PostEvent')}>
+                        <Image
+                            style={{width: 50, height: 50,}}
+                            source={require("ttext/src/assets/post_icon.png")}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
