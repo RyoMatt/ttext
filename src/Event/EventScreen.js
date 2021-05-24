@@ -20,6 +20,7 @@ export default class EventScreen extends Component {
                 <View style={styles.item}>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.detail}>{item.detail}</Text>
+
                 </View>
             </View>
             </TouchableOpacity>

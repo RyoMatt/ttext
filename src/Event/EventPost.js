@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Post from 'ttext/src/Post.js';
-import Header from 'ttext/src/Header';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +11,31 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 42,
   },
+  logoStyles: {
+          width: 200,
+          height: 50,
+          marginLeft: 20,
+          marginRight: 100,
+          marginBottom: 0,
+          marginTop: 0,
+          resizeMode: 'contain'
+      },
+      searchStyles: {
+          width: 25,
+          height: 50,
+          marginLeft: 0,
+          marginBottom: 0,
+          marginTop: 0,
+          resizeMode: 'contain'
+      },
+      messageStyles: {
+          width: 35,
+          height: 50,
+          marginLeft: 10,
+          marginBottom: 0,
+          marginTop: 0,
+          resizeMode: 'contain'
+      },
 });
 
 
@@ -22,7 +46,27 @@ export default class EventPost extends Component {
 
         return (
             <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
-                <Header/>
+                {//Header
+                }
+                <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
+                    <Image
+                        style={styles.logoStyles}
+                        source={require('ttext/src/assets/logo_title.png')}
+                    />
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <Image
+                            style={styles.searchStyles}
+                            source={require('ttext/src/assets/back.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Alert.alert('Message')}>
+                        <Image
+                            style={styles.messageStyles}
+                            source={require('ttext/src/assets/message_icon.png')}
+                        />
+                    </TouchableOpacity>
+                 </View>
+
                 <ScrollView>
                     <View style={{padding:10, flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
                         <Text style={{fontSize:40}}>{item.title}</Text>
