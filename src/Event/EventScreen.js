@@ -54,9 +54,14 @@ export default class EventScreen extends Component {
             refreshFlatList: true,
             filteredData: [],
             allData: [],
+            allColor: '#F87D0B',
+            schoolColor: '#FFFFFF',
+            nearMeColor: '#FFFFFF',
+            followColor: '#FFFFFF',
         };
 
         this.selectItem = this.selectItem.bind(this);
+        this.changeColor = this.changeColor.bind(this);
       }
 
     componentDidMount() {
@@ -117,15 +122,39 @@ export default class EventScreen extends Component {
         }
     }
 
-    render(){
-        let touchProps={
-            flex:1,
-            underlayColor: '#F87D0B',
-            onHideUnderlay: () => this.setState(false),
-            onShowUnderlay: () => this.setState(true),
-            onPress: () => selectItem('All'),
+    changeColor = (tab) =>{
+        if(tab=='All'){
+            this.setState({
+                allColor: '#F87D0B',
+                schoolColor: '#FFFFFF',
+                nearMeColor: '#FFFFFF',
+                followColor: '#FFFFFF',
+            })
+        }else if(tab=='School'){
+            this.setState({
+                allColor: '#FFFFFF',
+                schoolColor: '#F87D0B',
+                nearMeColor: '#FFFFFF',
+                followColor: '#FFFFFF',
+            })
+        }else if(tab=='Near Me'){
+            this.setState({
+                allColor: '#FFFFFF',
+                schoolColor: '#FFFFFF',
+                nearMeColor: '#F87D0B',
+                followColor: '#FFFFFF',
+            })
+        }else if(tab=='Following'){
+            this.setState({
+                allColor: '#FFFFFF',
+                schoolColor: '#FFFFFF',
+                nearMeColor: '#FFFFFF',
+                followColor: '#F87D0B',
+            })
         }
+    }
 
+    render(){
         const renderItem = ({ item, onPress }) => (
             <TouchableOpacity onPress={() => this.props.navigation.navigate('EventPost',{item},)}>
             <View style={styles.post}>
@@ -147,19 +176,19 @@ export default class EventScreen extends Component {
             <Header/>
             <View style={{flex: 0.5, flexDirection: 'row',}}>
 
-                <TouchableHighlight style={{flex:1}} onPress={() => this.selectItem('All')}>
+                <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.allColor}]} onPress={() => {this.changeColor('All'); this.selectItem('All');}}>
                     <Text style={styles.tab}>All</Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{flex:1}} onPress={() => this.selectItem('School')}>
+                <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.schoolColor}]} onPress={() => {this.changeColor('School'); this.selectItem('School');}}>
                     <Text style={styles.tab}>School</Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{flex:1}} onPress={() => this.selectItem('Near Me')}>
+                <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.nearMeColor}]} onPress={() => {this.changeColor('Near Me'); this.selectItem('Near Me');}}>
                     <Text style={styles.tab}>Near Me</Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{flex:1}} onPress={() => this.selectItem('Following')}>
+                <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.followColor}]} onPress={() => {this.changeColor('Following'); this.selectItem('Following');}}>
                     <Text style={styles.tab}>Following</Text>
                 </TouchableHighlight>
             </View>
