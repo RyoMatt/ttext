@@ -10,7 +10,26 @@ export default class ServicePost extends Component {
 
         return (
             <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
-                <Header/>
+                {//Header
+                }
+                <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
+                    <Image
+                        style={styles.logoStyles}
+                        source={require('ttext/src/assets/logo_title.png')}
+                    />
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <Image
+                            style={styles.searchStyles}
+                            source={require('ttext/src/assets/back.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Alert.alert('Message')}>
+                        <Image
+                            style={styles.messageStyles}
+                            source={require('ttext/src/assets/message_icon.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
 
                 <ScrollView>
                     <View style={{flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
@@ -97,5 +116,30 @@ const styles = StyleSheet.create({
     marginTop: 3,
     marginHorizontal: 5,
     fontSize: 16,
-  }
+  },
+  logoStyles: {
+      width: 200,
+      height: 50,
+      marginLeft: 20,
+      marginRight: 100,
+      marginBottom: 0,
+      marginTop: 0,
+      resizeMode: 'contain'
+  },
+  searchStyles: {
+      width: 25,
+      height: 50,
+      marginLeft: 0,
+      marginBottom: 0,
+      marginTop: 0,
+      resizeMode: 'contain'
+  },
+  messageStyles: {
+      width: 35,
+      height: 50,
+      marginLeft: 10,
+      marginBottom: 0,
+      marginTop: 0,
+      resizeMode: 'contain'
+  },
 });
