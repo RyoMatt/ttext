@@ -1,76 +1,73 @@
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { Image, Alert, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity} from 'react-native';
 import Post from 'ttext/src/Post.js';
-import ServicePost from './ServicePost';
 import Header from 'ttext/src/Header.js';
 import HeaderButtons from './ServiceHeaderButtons.js';
-import FilterSort from './FilterSortModal.js';
+import Categories from './ServiceCategories.js';
 import { createStackNavigator } from '@react-navigation/stack';
+import ServiceFlatList from './ServiceFlatList.js';
 
-const DATA = Array(10);
 const searchKey=Header.textInputValue;
 
-/*
-const Item = ({ title, location }) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.location}>{location}</Text>
-        <Text style={{color: 'orange', fontSize: 13, marginTop: 5}}>categories:</Text>
-        <View style={styles.categoriesContainer}>
-            <TouchableOpacity style={styles.categories}>
-                <Text style={{fontSize: 12, textAlign: 'center'}}>Category</Text>
-            </TouchableOpacity>
-        </View>
-    </View>
-);
-*/
+export default class ServiceScreen extends Component {
+   state={
+       toggleSchool: true,
+       toggleStudent: false
+   }
 
-const ServiceScreen = () => {
-    /*
-    const renderItem = ({ item }) => (
-        <Item title={item.title} location={item.location}/>
-    );
-   */
+    // Handles change to School-Provided Services page
+   handleSchoolChange = () => {
+        if(!this.state.toggleSchool){
+            const newSchoolState = !this.state.toggleSchool;
+            const newStudentState = !this.state.toggleStudent;
 
-    const renderItem = ({ item, onPress }) => (
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('ServicePost',{item},)}>
-            <View style={styles.post}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.location}>{item.location}</Text>
-                <Text style={{color: 'orange', fontSize: 13, marginTop: 5, marginLeft: 5}}>categories:</Text>
-                <View style={styles.categoriesContainer}>
-                    <TouchableOpacity style={styles.categories}>
-                        <Text style={{fontSize: 12, textAlign: 'center'}}>Category</Text>
-                    </TouchableOpacity>
-                </View>
+            this.setState({toggleSchool:newSchoolState, toggleStudent:newStudentState});
+        }
+   }
+
+    // Handles change to Student-Provided Services page
+   handleStudentChange = () => {
+        if(!this.state.toggleStudent){
+            const newSchoolState = !this.state.toggleSchool;
+            const newStudentState = !this.state.toggleStudent;
+
+            this.setState({toggleSchool:newSchoolState, toggleStudent:newStudentState});
+        }
+   }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Header/>
+
+                <HeaderButtons
+                    toggleSchool={this.state.toggleSchool}
+                    toggleStudent={this.state.toggleStudent}
+                    changeSchoolPage={this.handleSchoolChange.bind(this)}
+                    changeStudentPage={this.handleStudentChange.bind(this)}
+                />
+
+                <Categories/>
+
+                <ServiceFlatList
+                    toggleSchool={this.state.toggleSchool}
+                    navigation={this.props.navigation}
+                />
+
+                {/*Create Post Button: make this navigate to create-a-post page*/}
+                <TouchableOpacity
+                    style={{backgroundColor:'#00000000', borderRadius:30, position: 'absolute', right: 20, bottom: 0}}
+                    onPress={() => Alert.alert('Show Add Service page')}>
+                    {this.state.toggleStudent ? (
+                        <Image
+                            style={{resizeMode:'contain', width:60,}}
+                            source={require('./assets/add_post.png')}
+                        />
+                    ) : null}
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
-    );
-
-//sample items
-    for(let i=0;i<10;i++){
-            let p=new Post();
-            p.id=i;
-            p.title="service"+i;
-            p.location="600 California St";
-            DATA[i]=p
+        );
     }
-
-    return (
-        <View style={styles.container}>
-            <Header/>
-
-            <HeaderButtons/>
-
-            <FilterSort/>
-
-            <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-            />
-        </View>
-    );
 }
 
 const styles = StyleSheet.create({
@@ -110,7 +107,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 3,
         marginLeft: 5,
+    },
+    addPost: {
+
     }
 });
-
-export default ServiceScreen;

@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text} from 'react-native';
+import ServiceScreen from './ServiceScreen';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,40 +10,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'white',
         borderColor:'black',
-        borderWidth: 1
+        borderBottomWidth: 1,
+        borderTopWidth: 1,
     }
 });
 
 export default class HeaderButtons extends Component{
-    state={
-        toggleSchool: true,
-        toggleStudent: false
-    }
-
-    changeSchoolPage(){
-        if(!this.state.toggleSchool){
-            const newSchoolState = !this.state.toggleSchool;
-            const newStudentState = !this.state.toggleStudent;
-
-            this.setState({toggleSchool:newSchoolState, toggleStudent:newStudentState})
-        }
-    }
-
-    changeStudentPage(){
-        if(!this.state.toggleStudent){
-            const newSchoolState = !this.state.toggleSchool;
-            const newStudentState = !this.state.toggleStudent;
-
-            this.setState({toggleSchool:newSchoolState, toggleStudent:newStudentState})
-        }
-    }
-
     render() {
-        const {toggleSchool} = this.state;
-        const {toggleStudent} = this.state;
+        const toggleSchool = this.props.toggleSchool;
+        const toggleStudent = this.props.toggleStudent;
 
-        const schoolButtonBg = toggleSchool?"orange":"white";
-        const studentButtonBg = toggleStudent?"orange":"white";
+        const schoolButtonBg = toggleSchool?"#F87D0B":"white";
+        const studentButtonBg = toggleStudent?"#F87D0B":"white";
 
         const schoolTxtColor = toggleSchool?"white":"black";
         const studentTxtColor = toggleStudent?"white":"black";
@@ -50,17 +29,19 @@ export default class HeaderButtons extends Component{
         return (
             <View style={styles.container} >
 
-              <TouchableOpacity
-              onPress={()=>this.changeSchoolPage()}
-              style={{width:'50%',backgroundColor:schoolButtonBg,justifyContent:'center',borderColor:'black',borderWidth:1}}>
-               <Text style={{color:schoolTxtColor,textAlign:'center'}}>School-Provided Services</Text>
-              </TouchableOpacity>
+                {/*School-Provided Services button*/}
+                <TouchableOpacity
+                onPress={()=>this.props.changeSchoolPage()}
+                style={{width:'50%',backgroundColor:schoolButtonBg,justifyContent:'center',borderColor:'black'}}>
+                <Text style={{color:schoolTxtColor,textAlign:'center'}}>School-Provided Services</Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-              onPress={()=>this.changeStudentPage()}
-              style={{width:'50%',backgroundColor:studentButtonBg,justifyContent:'center',borderColor:'black',borderWidth:1}}>
-               <Text style={{color:studentTxtColor,textAlign:'center'}}>Student-Provided Services</Text>
-              </TouchableOpacity>
+                {/*Student-Provided Services button*/}
+                <TouchableOpacity
+                onPress={()=>this.props.changeStudentPage()}
+                style={{width:'50%',backgroundColor:studentButtonBg,justifyContent:'center',borderColor:'black',borderLeftWidth:1}}>
+                <Text style={{color:studentTxtColor,textAlign:'center'}}>Student-Provided Services</Text>
+                </TouchableOpacity>
 
             </View>
         );

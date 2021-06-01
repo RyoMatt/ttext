@@ -3,7 +3,7 @@ import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GeneralScreen from 'ttext/src/General/GeneralScreen';
 import MarketScreen from 'ttext/src/Market/MarketScreen';
-import ServiceScreen from 'ttext/src/Service/ServiceScreen';
+import ServiceStack from 'ttext/src/Service/ServiceStack';
 import ProfileScreen from 'ttext/src/Profile/ProfileScreen';
 import EventStack from 'ttext/src/Event/EventStack';
 
@@ -70,7 +70,7 @@ const BottomTabNav = () => {
                     ),
                 }}
             />
-            <Tab.Screen name="Service" component={ServiceScreen}
+            <Tab.Screen name="Service" component={ServiceStack}
                 options={{
                     tabBarLabel: 'Service',
                     tabBarIcon: ({focused, color, size}) => (
