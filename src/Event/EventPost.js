@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity, FlatList, TextInput } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Post from 'ttext/src/Post.js';
+import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity } from 'react-native';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -11,14 +10,23 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 42,
     },
-    logoStyles: {
-        width: 200,
-        height: 50,
-        marginLeft: 20,
-        marginRight: 100,
-        marginBottom: 0,
-        marginTop: 0,
-        resizeMode: 'contain'
+    logoRow: {
+        height: 40,
+        flexDirection: "row",
+        flex: 1,
+        marginRight: 15,
+        marginLeft: 15,
+        marginTop: 5,
+    },
+    logoIcon: {
+        width: 55,
+        height: 35,
+    },
+    logoText: {
+        width: 160,
+        height: 25,
+        marginLeft: 15,
+        alignSelf: "center",
     },
     searchStyles: {
         width: 25,
@@ -57,13 +65,23 @@ export default class EventPost extends Component {
 
         return (
             <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
-                {//Header
+
+
+                {/* Custom header with back button. This should eventually be replaced with the regular header,
+                  * and the screen should have its own back button.
+                  */
                 }
-                <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
-                    <Image
-                        style={styles.logoStyles}
-                        source={require('ttext/src/assets/logo_title.png')}
-                    />
+                <View style={{ flexDirection: "row", backgroundColor: '#FFFFFF', borderBottomWidth: 1 }}>
+                    <View style={styles.logoRow}>
+                        <Image
+                            style={styles.logoIcon}
+                            source={require('../assets/logo_icon.png')}
+                        />
+                        <Image
+                            style={styles.logoText}
+                            source={require("../assets/logo_text.png")}
+                        />
+                    </View>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Image
                             style={styles.searchStyles}
@@ -76,7 +94,9 @@ export default class EventPost extends Component {
                             source={require('ttext/src/assets/message_icon.png')}
                         />
                     </TouchableOpacity>
-                 </View>
+                </View>
+
+
 
                 <ScrollView>
                     <View style={{padding:10, flexDirection: 'column', backgroundColor: '#FFFFFF'}}>

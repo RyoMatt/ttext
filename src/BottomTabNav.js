@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import GeneralScreen from 'ttext/src/General/GeneralStack';
-import MarketScreen from 'ttext/src/Market/MarketStack';
-import ServiceScreen from 'ttext/src/Service/ServiceStack';
+import GeneralScreen from 'ttext/src/General/GeneralScreen';
+import MarketScreen from 'ttext/src/Market/MarketScreen';
+import ServiceScreen from 'ttext/src/Service/ServiceScreen';
 import ProfileStack from 'ttext/src/Profile/ProfileStack';
 import EventStack from 'ttext/src/Event/EventStack';
 
