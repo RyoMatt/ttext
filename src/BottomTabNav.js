@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const BottomTabNav = () => {
     return (
     <View style={{ flex: 1}}>
-        <Tab.Navigator>
+        <Tab.Navigator initialRouteName="General">
             <Tab.Screen name="Event" component={EventStack}
                 options={{
                     tabBarLabel: 'Event',
