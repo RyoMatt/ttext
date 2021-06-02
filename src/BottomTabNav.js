@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import GeneralScreen from 'ttext/src/General/GeneralScreen';
 import MarketScreen from 'ttext/src/Market/MarketScreen';
 import ServiceStack from 'ttext/src/Service/ServiceStack';
-import ProfileScreen from 'ttext/src/Profile/ProfileScreen';
+import ProfileStack from 'ttext/src/Profile/ProfileStack';
 import EventStack from 'ttext/src/Event/EventStack';
 
 const Tab = createBottomTabNavigator();
@@ -89,7 +90,7 @@ const BottomTabNav = () => {
                     ),
                 }}
              />
-            <Tab.Screen name="Profile" component={ProfileScreen}
+            <Tab.Screen name="Profile" component={ProfileStack}
                 options={{
                     tabBarLabel: 'Profile',
                     tabBarIcon: ({focused, color, size}) => (
