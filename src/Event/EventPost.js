@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity } from 'react-native';
 
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: StatusBar.currentHeight,
     },
     text: {
       fontSize: 42,

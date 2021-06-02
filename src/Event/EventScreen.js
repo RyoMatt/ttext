@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Image, SafeAreaView, View, FlatList, StyleSheet, Text,TouchableOpacity, Alert, Button, TouchableHighlight } from 'react-native';
+import { Image, View, FlatList, StyleSheet, Text,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
 import Post from 'ttext/src/Post.js';
-import EventPost from './EventPost';
-import { createStackNavigator } from '@react-navigation/stack';
 import Header from 'ttext/src/Header';
 
 const searchKey=Header.textInputValue;
