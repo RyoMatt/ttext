@@ -47,7 +47,9 @@ export default class ServiceScreen extends Component {
                     changeStudentPage={this.handleStudentChange.bind(this)}
                 />
 
-                <Categories/>
+                <View style={{borderBottomWidth:1, borderColor:'black'}}>
+                    <Categories/>
+                </View>
 
                 <ServiceFlatList
                     toggleSchool={this.state.toggleSchool}
@@ -55,16 +57,17 @@ export default class ServiceScreen extends Component {
                 />
 
                 {/*Create Post Button: make this navigate to create-a-post page*/}
-                <TouchableOpacity
-                    style={{backgroundColor:'#00000000', borderRadius:30, position: 'absolute', right: 20, bottom: 0}}
-                    onPress={() => Alert.alert('Show Add Service page')}>
-                    {this.state.toggleStudent ? (
-                        <Image
-                            style={{resizeMode:'contain', width:60,}}
-                            source={require('./assets/add_post.png')}
-                        />
-                    ) : null}
-                </TouchableOpacity>
+                <View style={{position: 'absolute', bottom:20, right:30,zIndex: 10,width: 50, height: 50,}}>
+                    <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('PostService')}>
+                        {this.state.toggleStudent ? (
+                            <Image
+                                style={{width: 50, height: 50,}}
+                                source={require("ttext/src/assets/post_icon.png")}
+                            />
+                        ) : null}
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
