@@ -145,6 +145,7 @@ const PostEvent =(props)=> {
                     selectedValue={selectedValue}
                     style={{ marginLeft:20, borderWidth: 1, height: 50, width: 150 }}
                     onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                    mode="dropdown"
                 >
                     <Picker.Item label="School" value="School" />
                     <Picker.Item label="Near Me" value="Near Me" />
