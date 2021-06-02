@@ -55,17 +55,17 @@ const styles = StyleSheet.create({
         marginRight: 13
       },
       image4: {
-          width: 17,
-          height: 17
+          width: 20,
+          height: 20
         },
         image2: {
-          width: 18,
-          height: 18,
+          width: 20,
+          height: 20,
           marginLeft: 259
         },
         image: {
-          width: 19,
-          height: 19,
+          width: 20,
+          height: 20,
           marginLeft: 6
         },
         title: {
@@ -123,12 +123,12 @@ export default class GeneralPost extends Component {
                          style={styles.image4}
                        ></Image>
                        <Image
-                         source={require("ttext/src/assets/message_icon.png")}
+                         source={require("ttext/src/assets/up_arrow.png")}
                          resizeMode="contain"
                          style={styles.image2}
                        ></Image>
                        <Image
-                         source={require("ttext/src/assets/message_icon.png")}
+                         source={require("ttext/src/assets/down_arrow.png")}
                          resizeMode="contain"
                          style={styles.image}
                        ></Image>
@@ -146,7 +146,7 @@ export default class GeneralPost extends Component {
                                 />
                                 <View style={{ flexShrink: 1 }}>
                                     <Text style={{fontSize:15}}>{item.title}</Text>
-                                    <Text style={{fontSize:10}}>{item.detail}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+                                    <Text style={{fontSize:10}}>{item.detail}</Text>
                                 </View>
                             </View>
                             <View style={styles.post}>
