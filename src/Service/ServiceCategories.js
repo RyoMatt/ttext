@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Modal, Picker } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function Categories() {
     // for use with modal
     //const [filterModalOpen, setFilterModalOpen] = useState(false);
     //const [sortModalOpen, setSortModalOpen] = useState(false);
+    const [selectedValue, setSelectedValue] = useState(null);
 
     return (
         <View style={styles.container}>
@@ -35,6 +36,7 @@ export default function Categories() {
             */}
 
             {/*https://reactnativeexample.com/a-picker-dropdown-component-for-react-native/*/}
+            {/*
             <DropDownPicker
                 items={[
                     {label: 'Item 1', value: 'item1'},
@@ -48,6 +50,19 @@ export default function Categories() {
                 dropDownStyle={{backgroundColor: 'white'}}
                 onChangeItem={item => console.log(item.label, item.value)}
             />
+            */}
+
+            <Picker
+                placeholder="Categories"
+                selectedValue={selectedValue}
+                style={{borderWidth: 1, height: 40, borderColor:'black', width:'100%' }}
+                itemStyle={{textAlign:'center'}}
+                mode="dropdown"
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            >
+                <Picker.Item label="View All Categories" value="View All Categories" />
+                <Picker.Item label="Category 1" value="Category 1" />
+            </Picker>
         </View>
     );
 }
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 0,
         marginBottom: 0,
-        backgroundColor: 'black',
+        backgroundColor: 'white',
     },
     modalContent: {
         flexDirection: 'column',
