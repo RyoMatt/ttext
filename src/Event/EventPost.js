@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity, FlatList, TextInput } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Text, View, Image, ScrollView, StyleSheet, Button, Alert, TouchableOpacity, FlatList } from 'react-native';
 import Post from 'ttext/src/Post.js';
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: StatusBar.currentHeight,
     },
     text: {
       fontSize: 42,

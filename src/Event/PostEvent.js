@@ -1,6 +1,5 @@
 import React, { Component,useState } from 'react';
-import { Text, View, Image, ScrollView, StatusBar, StyleSheet, Button, Alert, TouchableOpacity, FlatList, TextInput, Picker } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { Text, View, Image, ScrollView, StyleSheet, Button, Alert, TouchableOpacity, FlatList, TextInput, Picker } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const styles = StyleSheet.create({
