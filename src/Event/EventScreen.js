@@ -18,20 +18,20 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,//margin between image and texts
     },
     title: {
-        fontSize: 28,
+        fontSize: 22,
     },
     detail: {
         fontSize: 15,
     },
     post: {
-        height: 125,
+        height: 110,
         flexDirection: "row",
         borderWidth: 1,
         borderColor: "#20232a",
     },
     icon: {
-        width:100,
-        height:100,
+        width:80,
+        height:80,
         marginTop: 12.5,
         marginLeft: 5,
     },
