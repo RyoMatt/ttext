@@ -3,74 +3,83 @@ import { Text, View, Image, ScrollView, StyleSheet, Button, Alert, TouchableOpac
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const styles = StyleSheet.create({
-container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 42,
-  },
-  logoStyles: {
-          width: 200,
-          height: 50,
-          marginLeft: 20,
-          marginRight: 100,
-          marginBottom: 0,
-          marginTop: 0,
-          resizeMode: 'contain'
-      },
-      searchStyles: {
-          width: 25,
-          height: 50,
-          marginLeft: 0,
-          marginBottom: 0,
-          marginTop: 0,
-          resizeMode: 'contain'
-      },
-      messageStyles: {
-          width: 35,
-          height: 50,
-          marginLeft: 10,
-          marginBottom: 0,
-          marginTop: 0,
-          resizeMode: 'contain'
-      },
-      input: {
-          height: 40,
-          marginLeft: 20,
-          marginRight: 20,
-          borderWidth: 1,
-        },
-        detail: {
-                  height: 120,
+    container: {
+        flex: 1,
+        padding: 10,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+    },
+    text: {
+        fontSize: 42,
+    },
+    logoRow: {
+        height: 40,
+        flexDirection: "row",
+        flex: 1,
+        marginRight: 15,
+        marginLeft: 15,
+        marginTop: 5,
+    },
+    logoIcon: {
+        width: 55,
+        height: 35,
+    },
+    logoText: {
+        width: 160,
+        height: 25,
+        marginLeft: 15,
+        alignSelf: "center",
+    },
+    searchStyles: {
+        width: 25,
+        height: 50,
+        marginLeft: 0,
+        marginBottom: 0,
+        marginTop: 0,
+        resizeMode: 'contain'
+    },
+    messageStyles: {
+        width: 35,
+        height: 50,
+        marginLeft: 10,
+        marginBottom: 0,
+        marginTop: 0,
+        resizeMode: 'contain'
+    },
+    input: {
+        height: 40,
+        marginLeft: 20,
+        marginRight: 20,
+        borderWidth: 1,
+    },
+    detail: {
+        height: 120,
 
-                  borderWidth: 1,
-                  marginLeft: 20,
-                            marginRight: 20,
-                },
-      titleText: {
-          marginLeft: 20,
-          fontSize: 22,
-          fontWeight: 'bold',
-          paddingVertical: 5,
-        },
-        textStyle: {
-          padding: 10,
-          color: 'black',
-        },
-        buttonStyle: {
-          alignItems: 'center',
-          flexDirection: 'row',
-          backgroundColor: '#DDDDDD',
-          padding: 5,
-        },
-        imageStyle: {
-          width: 160,
-          height: 100,
-          margin: 5,
-        },
+        borderWidth: 1,
+        marginLeft: 20,
+                marginRight: 20,
+    },
+    titleText: {
+        marginLeft: 20,
+        fontSize: 22,
+        fontWeight: 'bold',
+        paddingVertical: 5,
+    },
+    textStyle: {
+        padding: 10,
+        color: 'black',
+    },
+    buttonStyle: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#DDDDDD',
+        padding: 5,
+    },
+    imageStyle: {
+        width: 160,
+        height: 100,
+        margin: 5,
+    },
 });
 
 const PostEvent =(props)=> {
@@ -117,14 +126,24 @@ const PostEvent =(props)=> {
       };
 
     return (
-        <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
-            {//Header
+        <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+
+
+            {/* Custom header with back button. This should eventually be replaced with the regular header,
+                  * and the screen should have its own back button.
+                  */
             }
-            <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
-                <Image
-                    style={styles.logoStyles}
-                    source={require('ttext/src/assets/logo_title.png')}
-                />
+            <View style={{ flexDirection: "row", backgroundColor: '#FFFFFF', borderBottomWidth: 1 }}>
+                <View style={styles.logoRow}>
+                    <Image
+                        style={styles.logoIcon}
+                        source={require('../assets/logo_icon.png')}
+                    />
+                    <Image
+                        style={styles.logoText}
+                        source={require("../assets/logo_text.png")}
+                    />
+                </View>
                 <TouchableOpacity onPress={() => props.navigation.goBack()}>
                     <Image
                         style={styles.searchStyles}
@@ -138,6 +157,8 @@ const PostEvent =(props)=> {
                     />
                 </TouchableOpacity>
             </View>
+
+
 
             <ScrollView>
                 <Text style={styles.titleText}>Category</Text>
