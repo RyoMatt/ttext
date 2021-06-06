@@ -1,3 +1,14 @@
+/*  GeneralPost.js describes visualization and functionality that come with viewing
+*   details on a specific post. While the same features will be available as given in
+*   the preview but the comment section is visible when a specific post is clicked on.
+*
+*
+*
+*   NOTE!!: GeneralPost.js is not fully implemented and will need to be further developed
+*           in order to have full functionality.
+*           Ex: Post accessory features are not implemented such as being able to comment.
+
+*/
 import React, { Component } from 'react';
 import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -91,6 +102,7 @@ export default class GeneralPost extends Component {
         const {item}=this.props.route.params;
 
         return (
+        //Describes the specific post that the user has clicked on.
             <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
                 {//Header
                 }
@@ -116,6 +128,11 @@ export default class GeneralPost extends Component {
                      <Text style={styles.title}>{item.title}</Text>
                      <Text style={styles.user}>@{item.user}</Text>
                      <Text style={styles.detail}>{item.detail}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Text>
+
+                     //Describes the post accessory functionality
+                     //
+                     //
+                     //Actual functionality will need to be implemented. Just icons at the moment
                      <View style={styles.image4Row}>
                        <Image
                          source={require("ttext/src/assets/message_icon.png")}

@@ -1,3 +1,12 @@
+/*  PostGeneral.js describes functionality and visualisation that comes with posting
+*   a post on the general page. Differences in a general post compared to the other screens
+*   are thee different post categories: PSA and Help.
+*
+*
+*
+*   NOTE!!: PostGeneral.js is not fully implemented and will need to be further developed
+*           in order to have full functionality.
+*/
 import React, { Component,useState } from 'react';
 import { Text, View, Image, ScrollView, StatusBar, StyleSheet, Button, Alert, TouchableOpacity, FlatList, TextInput, Picker } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -44,34 +53,33 @@ container: {
           marginRight: 20,
           borderWidth: 1,
         },
-        detail: {
-                  height: 120,
-
-                  borderWidth: 1,
-                  marginLeft: 20,
-                            marginRight: 20,
-                },
+      detail: {
+          height: 120,
+          borderWidth: 1,
+          marginLeft: 20,
+          marginRight: 20,
+      },
       titleText: {
           marginLeft: 20,
           fontSize: 22,
           fontWeight: 'bold',
           paddingVertical: 5,
-        },
-        textStyle: {
+      },
+      textStyle: {
           padding: 10,
           color: 'black',
-        },
+      },
         buttonStyle: {
           alignItems: 'center',
           flexDirection: 'row',
           backgroundColor: '#DDDDDD',
           padding: 5,
-        },
+      },
         imageStyle: {
           width: 160,
           height: 100,
           margin: 5,
-        },
+      },
 });
 
 const PostGeneral =(props)=> {

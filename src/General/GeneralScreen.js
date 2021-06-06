@@ -1,3 +1,14 @@
+/*  GeneralScreen.js describes functionality and visualisation that the general screen
+*   is entitled to have. Functionality includes filtering of the post, Post display, and post
+*   creation.
+*
+*
+*
+*   NOTE!!: GeneralScreen.js is not fully implemented and will need to be further developed
+*           in order to have full functionality.
+*           Ex: Post accessory features are not implemented; ie up/down votes, direct message, etc.
+*/
+
 import React, { Component, useState } from 'react';
 import { Image, SafeAreaView, View, FlatList, StyleSheet, Text,TouchableOpacity, Alert, Button, TouchableHighlight } from 'react-native';
 import Post from 'ttext/src/Post.js';
@@ -30,6 +41,7 @@ export default class GeneralScreen extends Component {
         this.setData();
       }
 
+    //initializes dummy info to put on display for demonstration purposes
     setData = () => {
         //sample items & ask server to get data here
         var temp=[]
@@ -46,6 +58,8 @@ export default class GeneralScreen extends Component {
         });
       }
 
+    //This acts as functionality for tab navigation by showing selected posts depending on the
+    //category chosen. This is also hard coded
     selectItem = (category) =>{
         var array = Object.assign([], this.state.allData);
         console.log(category)
@@ -84,6 +98,7 @@ export default class GeneralScreen extends Component {
         }
     }
 
+    //This acts as visual effects when tabs are being changed between one another
     changeColor = (tab) =>{
         if(tab=='All'){
             this.setState({
@@ -158,7 +173,7 @@ export default class GeneralScreen extends Component {
         return (
         <View style={styles.container}>
             <Header/>
-            <View style={{flex: 0.5, flexDirection: 'row',}}>
+            <View style={{flexDirection: 'row',}}>
 
                 <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.allColor}]} onPress={() => {this.changeColor('All'); this.selectItem('All');}}>
                     <Text style={styles.tab}>All</Text>
@@ -177,14 +192,12 @@ export default class GeneralScreen extends Component {
                 </TouchableHighlight>
             </View>
 
-            <View style={{flex:10}}>
-                <FlatList   //extraData to re-render DATA
-                    data={this.state.filteredData}
-                    extraData={this.state.refreshFlatList}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-            </View>
+            <FlatList   //extraData to re-render DATA
+                data={this.state.filteredData}
+                extraData={this.state.refreshFlatList}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
             <View style={{position: 'absolute', bottom:20, right:30,zIndex: 10,width: 50, height: 50,}}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('PostGeneral')}>
                     <Image
@@ -211,34 +224,39 @@ const styles = StyleSheet.create({
         marginVertical: 5,//margin between item rows
         marginHorizontal: 5,//margin between image and texts
     },
+    //style to describe the post title/header
     title: {
         fontSize: 28,
         marginLeft: 10,
     },
+    //style to describe the details in the initial preview of the post
     detail: {
         fontSize: 15,
         marginLeft: 10,
         marginTop: 0,
     },
+    //style to describe post
     post: {
         height: 110,
         borderWidth: 1,
         borderColor: "#20232a",
     },
+    //style to describe profile picture
     icon: {
         width:30,
         height:30,
         marginTop: 5,
         marginLeft: 5,
     },
+    //style to describe top tab navigation
     tab: {
-        flex:1,
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 18,
         borderWidth: 1,
         borderColor: "#20232a",
     },
+    //styles to describe the dimensions of each post
     image4: {
         width: 20,
         height: 20
@@ -259,6 +277,7 @@ const styles = StyleSheet.create({
         marginTop: 2,
         marginLeft: 7
     },
+    //style to describe the bottom post accessory features: direct messaging, commenting, up/down voting
     image4Row: {
         height: 19,
         flexDirection: "row",
@@ -267,20 +286,12 @@ const styles = StyleSheet.create({
         marginLeft: 274,
         marginTop: 20
     },
+    //style to describe each post header: Profile picture and Title of the post
     top: {
         height: 19,
         flexDirection: "row",
         flex: 1,
-        marginRight: 0,
         marginLeft: 5,
-        marginTop: 0,
-    },
-    rect: {
-        width: 250,
-        height: 14,
-        backgroundColor: "rgb(128,128,128)",
-        marginTop: 0,
-        marginLeft: 30
     },
 });
 
