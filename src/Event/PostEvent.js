@@ -175,7 +175,7 @@ const PostEvent =(props)=> {
                     <Button
                         title="   Post   "
                         color='#F87D0B'
-                        onPress={() => props.navigation.goBack()}   //need to call server function here as well as goBack().
+                        onPress={() => props.navigation.goBack()}   //need to call server function to send all the input here as well as goBack().
                     />
                     <Button
                         title="Cancel"
