@@ -24,8 +24,8 @@ App.js contains the bootup functionality of the app.
 # Consideration for Changes
 - seamless header as a header component on app.js instead of having custom header on each screen.js
 - viewable user profile for other users
-- common UI(fonts, images, color)
-- icon image transparency
+- consistent UI(fonts, images, color)
+- icon image transparency(replace them with transparent icon images)
 - numbers on icons like message, comments, up down votes
 - class functions which requires database
 
