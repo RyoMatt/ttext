@@ -21,6 +21,13 @@ App.js contains the bootup functionality of the app.
 - Page for Handshake integration 
 - Page for Housing services
 
+# Consideration for Changes
+- seamless header as a header component on app.js instead of having custom header on each screen.js
+- viewable user profile for other users
+- common UI(fonts, images, color)
+- icon image transparency
+- numbers on icons like message, comments, up down votes
+- class functions which requires database
 
 # Advice
 - Some documentation on getting set up to work & debug with this repo: https://reactnative.dev/docs/environment-setup
