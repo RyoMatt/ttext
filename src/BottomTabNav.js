@@ -3,7 +3,6 @@ import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import GeneralStack from 'ttext/src/General/GeneralStack';
-import GeneralScreen from 'ttext/src/General/GeneralScreen';
 import MarketScreen from 'ttext/src/Market/MarketScreen';
 import ServiceStack from 'ttext/src/Service/ServiceStack';
 import ProfileStack from 'ttext/src/Profile/ProfileStack';

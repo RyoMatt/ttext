@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import EventScreen from './EventScreen';
 import EventPost from './EventPost';
 import PostEvent from './PostEvent';

@@ -1,51 +1,20 @@
 import React, { Component, useState } from 'react';
 import { Image, View, FlatList, StyleSheet, Text,TouchableOpacity, Button, TouchableHighlight } from 'react-native';
+
 import Post from 'ttext/src/Post.js';
 import Header from 'ttext/src/Header';
 
-const searchKey=Header.textInputValue;
+/*
+Main screen in Event category
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection:'column',
-        backgroundColor: '#FFFFFF'
-        //marginTop: StatusBar.currentHeight || 0,
-    },
-    item: {
-        padding: 0,
-        marginVertical: 5,//margin between item rows
-        marginHorizontal: 5,//margin between image and texts
-    },
-    title: {
-        fontSize: 22,
-    },
-    detail: {
-        fontSize: 15,
-    },
-    post: {
-        height: 110,
-        flexDirection: "row",
-        borderWidth: 1,
-        borderColor: "#20232a",
-    },
-    icon: {
-        width:80,
-        height:80,
-        marginTop: 12.5,
-        marginLeft: 5,
-    },
-    tab: {
-        flex:1,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: "#20232a",
-    },
-});
+There are currently two lists of post data, allData and filteredData.
+However, you may remove one because you never modify the list.
+Instead, you may call backend to set the list whenever you need.
+"server.functionName()" is an example code to call server function.
+*/
 
 export default class EventScreen extends Component {
+    //all and filtered data are lists of post from database
     constructor(props) {
         super(props);
         this.state = {
@@ -60,14 +29,15 @@ export default class EventScreen extends Component {
 
         this.selectItem = this.selectItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
-      }
+    }
 
+    //Set post data before render main screen
     componentDidMount() {
         this.setData();
-      }
+    }
 
     setData = () => {
-        //sample items & ask server to get data here
+        //Ask server to get data here. Setting sample data now.
         var temp=[]
         for(let i=0;i<10;i++){
             let p=new Post();
@@ -76,37 +46,49 @@ export default class EventScreen extends Component {
             p.detail+=' '+p.title
             temp.push(p)
         }
+        //temp = server.getAllData("Event")
+        //May remove filteredData here to set it in selectItem function below
         this.setState({
             filteredData: temp,
             allData: temp,
         });
-      }
+    }
 
+    //set post data and re-render FlatList
     selectItem = (category) =>{
+        //copy of allData. May remove if you call backend here
         var array = Object.assign([], this.state.allData);
-        console.log(category)
+        //console.log(category)
+
         if(category=='All'){
+            //Here call backend
+            //array = server.getData("Event", "All")
             this.setState({filteredData: array, refreshFlatList: !this.state.refreshFlatList});
         }
         else if(category=='School'){
+            //Here call backend
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(i%2==0){
                     temp.push(array[i])
                 }
             }
+            //array = server.getData("Event", "School")
             this.setState({filteredData: temp, refreshFlatList: !this.state.refreshFlatList});
         }
         else if(category=='Near Me'){
+            //Here call backend
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(i%2==1){
                     temp.push(array[i])
                 }
             }
+            //array = server.getData("Event", "Near Me")
             this.setState({filteredData: temp, refreshFlatList: !this.state.refreshFlatList});
         }
         else if(category=='Following'){
+            //Here call backend
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(array[i].title=='event2'){
@@ -116,10 +98,12 @@ export default class EventScreen extends Component {
                     temp.push(array[i])
                 }
             }
+            //array = server.getData("Event", "Following")
             this.setState({filteredData: temp, refreshFlatList: !this.state.refreshFlatList})
         }
     }
 
+    //set color on selected tab and white on others
     changeColor = (tab) =>{
         if(tab=='All'){
             this.setState({
@@ -153,6 +137,7 @@ export default class EventScreen extends Component {
     }
 
     render(){
+        {/*Post View in FlatList*/}
         const renderItem = ({ item, onPress }) => (
             <TouchableOpacity onPress={() => this.props.navigation.navigate('EventPost',{item},)}>
             <View style={styles.post}>
@@ -172,8 +157,9 @@ export default class EventScreen extends Component {
         return (
         <View style={styles.container}>
             <Header/>
-            <View style={{flex: 0.5, flexDirection: 'row',}}>
 
+            {/*category tab*/}
+            <View style={{flexDirection: 'row',}}>
                 <TouchableHighlight style={[{flex:1},{backgroundColor: this.state.allColor}]} onPress={() => {this.changeColor('All'); this.selectItem('All');}}>
                     <Text style={styles.tab}>All</Text>
                 </TouchableHighlight>
@@ -191,14 +177,15 @@ export default class EventScreen extends Component {
                 </TouchableHighlight>
             </View>
 
-            <View style={{flex:10}}>
-                <FlatList   //extraData to re-render DATA
-                    data={this.state.filteredData}
-                    extraData={this.state.refreshFlatList}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-            </View>
+            {/*Event List*/}
+            <FlatList   //extraData to re-render DATA
+                data={this.state.filteredData}
+                extraData={this.state.refreshFlatList}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+
+            {/*Create Post Button: make this navigate to create-a-post page*/}
             <View style={{position: 'absolute', bottom:20, right:30,zIndex: 10,width: 50, height: 50,}}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('PostEvent')}>
                     <Image
@@ -214,3 +201,41 @@ export default class EventScreen extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection:'column',
+        backgroundColor: '#FFFFFF',
+        //marginTop: StatusBar.currentHeight || 0,
+    },
+    item: {
+        padding: 0,
+        marginVertical: 5,//margin between item rows
+        marginHorizontal: 5,//margin between image and texts
+    },
+    title: {
+        fontSize: 22,
+    },
+    detail: {
+        fontSize: 15,
+    },
+    post: {
+        height: 110,
+        flexDirection: "row",
+        borderWidth: 1,
+        borderColor: "#20232a",
+    },
+    icon: {
+        width:80,
+        height:80,
+        marginTop: 12.5,
+        marginLeft: 5,
+    },
+    tab: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 18,
+        borderWidth: 1,
+        borderColor: "#20232a",
+    },
+});
