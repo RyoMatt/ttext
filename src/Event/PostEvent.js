@@ -49,7 +49,7 @@ const PostEvent =(props)=> {
             alert(response.errorMessage);
             return;
           }
-          /*
+          /*Remove later
           console.log('base64 -> ', response.base64);
           console.log('uri -> ', response.uri);
           console.log('width -> ', response.width);
