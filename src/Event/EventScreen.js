@@ -8,7 +8,7 @@ import Header from 'ttext/src/Header';
 Main screen in Event category
 
 There are currently two lists of post data, allData and filteredData.
-However, you may remove one because you never modify the list.
+However, you may remove one because you never modify the list in frontend.
 Instead, you may call backend to set the list whenever you need.
 "server.functionName()" is an example code to call server function.
 */
@@ -37,7 +37,8 @@ export default class EventScreen extends Component {
     }
 
     setData = () => {
-        //Ask server to get data here. Setting sample data now.
+        //Ask server to get data here. Setting initial data.
+        //This is sample data. Remove this in future.
         var temp=[]
         for(let i=0;i<10;i++){
             let p=new Post();
@@ -47,7 +48,8 @@ export default class EventScreen extends Component {
             temp.push(p)
         }
         //temp = server.getAllData("Event")
-        //May remove filteredData here to set it in selectItem function below
+
+        //May remove one of them if you call backend
         this.setState({
             filteredData: temp,
             allData: temp,
@@ -67,6 +69,7 @@ export default class EventScreen extends Component {
         }
         else if(category=='School'){
             //Here call backend
+            //This is fake filter. Remove this in future
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(i%2==0){
@@ -78,6 +81,7 @@ export default class EventScreen extends Component {
         }
         else if(category=='Near Me'){
             //Here call backend
+            //This is fake filter. Remove this in future
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(i%2==1){
@@ -89,6 +93,7 @@ export default class EventScreen extends Component {
         }
         else if(category=='Following'){
             //Here call backend
+            //This is fake filter. Remove this in future
             var temp=[];
             for(let i=0;i<array.length;i++){
                 if(array[i].title=='event2'){
@@ -137,7 +142,7 @@ export default class EventScreen extends Component {
     }
 
     render(){
-        {/*Post View in FlatList*/}
+        {/*Each Post View in FlatList*/}
         const renderItem = ({ item, onPress }) => (
             <TouchableOpacity onPress={() => this.props.navigation.navigate('EventPost',{item},)}>
             <View style={styles.post}>

@@ -49,7 +49,7 @@ const PostEvent =(props)=> {
             alert(response.errorMessage);
             return;
           }
-          /*
+          /*Remove later
           console.log('base64 -> ', response.base64);
           console.log('uri -> ', response.uri);
           console.log('width -> ', response.width);
@@ -175,7 +175,7 @@ const PostEvent =(props)=> {
                     <Button
                         title="   Post   "
                         color='#F87D0B'
-                        onPress={() => props.navigation.goBack()}   //need to call server function here as well as goBack().
+                        onPress={() => props.navigation.goBack()}   //need to call server function to send all the input here as well as goBack().
                     />
                     <Button
                         title="Cancel"

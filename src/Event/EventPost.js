@@ -60,7 +60,7 @@ export default class EventPost extends Component {
                                 <Text style={{fontSize:25}}>Hosted By</Text>
                                 <Text style={{fontSize:20}}>{item.user}</Text>
                             </View>
-                            {/*Need profile page screen for host users, replace alert with navigation*/}
+                            {/*Need profile page screen for users to see the host user profile, replace alert with navigation to profile page*/}
                             <TouchableOpacity onPress={() => Alert.alert('Profile Page')}>
                                 <Image
                                     style={{marginTop: 5, marginLeft: 10, height: 50, width: 50}}
