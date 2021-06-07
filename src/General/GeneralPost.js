@@ -1,3 +1,13 @@
+/*  GeneralPost.js describes the functionality and visualization when clicking on
+*   a specific post to view more information about the post. Such information includes
+*   the comment section and underlying details that may be hidden in the initial
+*   preview of the post.
+*
+*
+*
+*   NOTE!!: PostGeneral.js is not fully implemented and will need to be further developed
+*           in order to have full functionality.
+*/
 import React, { Component } from 'react';
 import { Text, View, Image, ScrollView, StyleSheet, StatusBar, Button, Alert, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -94,6 +104,7 @@ export default class GeneralPost extends Component {
             <View style={{flex: 1,flexDirection: 'column', backgroundColor: '#FFFFFF'}}>
                 {//Header
                 }
+
                 <View style={{flexDirection: "row",backgroundColor: '#F0000', borderWidth: 1}}>
                     <Image
                         style={styles.logoStyles}
