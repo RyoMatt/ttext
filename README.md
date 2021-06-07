@@ -32,4 +32,4 @@ App.js contains the bootup functionality of the app.
 # Advice
 - Some documentation on getting set up to work & debug with this repo: https://reactnative.dev/docs/environment-setup
 - There is a site called 'BuilderX' which lets you graphically draw screens and then provides sample React-Native code for your drawings. While it isn't perfect, and only has a 30-day free trial per Google Account, it may be very helpful in designing new screens or understanding existing ones.
-- AES -> CBC 128b -> 'fluffcatverycute' (If you know, you know.)
+- Do not delete test.txt until app is ready for production. Read commit message for details.
