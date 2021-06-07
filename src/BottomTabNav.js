@@ -3,7 +3,7 @@ import { Text, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import GeneralStack from 'ttext/src/General/GeneralStack';
-import MarketScreen from 'ttext/src/Market/MarketScreen';
+import MarketStack from 'ttext/src/Market/MarketStack';
 import ServiceStack from 'ttext/src/Service/ServiceStack';
 import ProfileStack from 'ttext/src/Profile/ProfileStack';
 import EventStack from 'ttext/src/Event/EventStack';
@@ -33,7 +33,7 @@ const BottomTabNav = () => {
                     ),
                 }}
             />
-            <Tab.Screen name="Market" component={MarketScreen}
+            <Tab.Screen name="Market" component={MarketStack}
                 options={{
                     tabBarLabel: 'Market',
                     tabBarIcon: ({focused, color, size}) => (
